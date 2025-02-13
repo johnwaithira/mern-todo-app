@@ -1,16 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db.js";
 import mongoose from "mongoose";
+import { connectDB } from "./config/db.js";
 
 dotenv.config();
-
-mongoose.connect(process.env.MONGO).then(()=>{
-    console.log("Connected to database successfully")
-}).catch((err)=>{
-    console.log(err)
-});
-
 
 const app = new express();
 
@@ -26,6 +19,6 @@ app.get("/", (req, res)=>{
 });
 
 app.listen(port, ()=>{
-    // connectDB();
+    connectDB();
     console.log("Server started at port 3000");
 })

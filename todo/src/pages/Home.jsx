@@ -1,7 +1,7 @@
 import { IonIcon } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { chevronDownOutline, chevronUpOutline, trashOutline, pencilOutline } from 'ionicons/icons';
-import TaskComponent from '../components/taskComponent';
+import TaskComponent from '../components/TaskComponent.jsx';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev" : "nodemon api/server.js",
     "start" : "node api/server.js",
-    "build" : "npm install && npm install --prefix todo && npm run build --prefix todo"
+    "build" : "npm install && npm install --prefix todo && npm run build --prefix todo",
+    "serve" : "nodemon api/server.js && npm run dev --prefix todo"
   },
   "keywords": [],
   "author": "",

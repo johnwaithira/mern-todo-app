@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import taskRouter from "./routes/task.routes.js";
 import path from 'path'
+import cors from 'cors'
 
 dotenv.config();
 
@@ -10,6 +11,9 @@ const app = new express();
 
 // Middleware to parse json data
 app.use(express.json());
+
+// Cors middleware
+app.use(cors())
 
 const port = process.env.PORT || 3000;
 

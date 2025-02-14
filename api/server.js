@@ -11,7 +11,7 @@ const app = new express();
 // Middleware to parse json data
 app.use(express.json());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 const __dirname = path.resolve()
 

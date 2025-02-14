@@ -1,11 +1,8 @@
 
 import { useNavigate, useParams } from 'react-router-dom'
 import Header from '../components/Header';
-<<<<<<< HEAD
 import TaskComponent from '../components/TaskComponent.jsx';
-=======
 import TaskComponent from '../components/TaskComponent';
->>>>>>> afc2889ff6a3760ba16342335fed458a797a471e
 import React, { useState } from 'react';
 
 const Update = () => {

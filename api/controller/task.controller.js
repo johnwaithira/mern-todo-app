@@ -41,8 +41,7 @@ const deleteTask = async (req, res, next) => {
 };
 
 const updateTask = async (req, res, next) => {
-    const id = req.params.id;
-    const { taskname } =  req.body;
+    const { id, taskname } =  req.body;
 
     try {
         const task = await Task.findByIdAndUpdate(id, {taskname}, {new : true});

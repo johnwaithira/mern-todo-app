@@ -34,7 +34,28 @@ const Update = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate("/")
+        setLoading(true);
+        try {
+            const res = await fetch(`/api/tasks/update/${id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            if(data.success === false){
+                setError(data.message);
+                setLoading(false);
+                return;
+            }
+            navigate("/")
+            setLoading(false)
+        } catch (error) {
+            setError(error.message);
+            setLoading(false)
+        }
+        setLoading(false);
     }
 
     return (
@@ -47,7 +68,7 @@ const Update = () => {
             <TaskComponent
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
-                isLoading={false}
+                isLoading={isLoading}
                 loading="Updating ...."
                 loaded="Update task"
                 formData={formData}

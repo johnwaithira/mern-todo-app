@@ -4,6 +4,7 @@ import { chevronDownOutline, chevronUpOutline, trashOutline, pencilOutline } fro
 import TaskComponent from '../components/TaskComponent.jsx';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import Spinner from '../components/Spinner.jsx';
 
 const Home = () => {
 
@@ -101,19 +102,33 @@ const Home = () => {
             />
 
             {
-                tasks.map((task, index) => {
-                    return (
-                        <div key={index} className='flex max-w-lg flex-wrap justify-between items-center shadow  py-2 rounded-lg px-3 '>
-                            <p>{index + 1}. {task.taskname}</p>
-                            <div>
-                                <IonIcon onClick={() => deleteTask(task._id)} className='text-3xl px-2 cursor-pointer text-[#FF6347]' icon={trashOutline} />
-                                <Link to={`/update/${task._id}`}>
-                                    <IonIcon className='text-2xl text-blue-500 px-2 cursor-pointer' icon={pencilOutline} />
-                                </Link>
-                            </div>
-                        </div>
+                (isLoading && <Spinner />)
+
+            }
+
+            {
+
+                !isLoading && (
+                    tasks.length > 0 ? (
+                        tasks.map((task, index) => {
+                            return (
+                                <div key={index} className='flex max-w-lg flex-wrap justify-between items-center shadow  py-2 rounded-lg px-3 '>
+                                    <p>{index + 1}. {task.taskname}</p>
+                                    <div>
+                                        <IonIcon onClick={() => deleteTask(task._id)} className='text-3xl px-2 cursor-pointer text-[#FF6347]' icon={trashOutline} />
+                                        <Link to={`/update/${task._id}`}>
+                                            <IonIcon className='text-2xl text-blue-500 px-2 cursor-pointer' icon={pencilOutline} />
+                                        </Link>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    ) : (
+                        <div className='bg-red-300 text-white p-3 max-w-md my-3 rounded-lg'>No tasks available ! Please add some tasks</div>
                     )
-                })
+                )
+
+
             }
         </div>
     )

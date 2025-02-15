@@ -54,4 +54,17 @@ const updateTask = async (req, res, next) => {
     }
 };
 
-export { createTask, listTask, deleteTask, updateTask };
+const getTaskById = async (req, res, next) => {
+    const id = req.params.id;
+    try {
+        const task = await Task.findById(id);
+        if(!task){
+            return res.status(404).json({message : "Task not found 😿"});
+        }
+        return res.status(200).json({task});
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { createTask, listTask, deleteTask, updateTask, getTaskById };

@@ -27,11 +27,11 @@ app.listen(port, ()=>{
 
 app.use("/api/tasks", taskRouter);
 
-app.use(express.static(path.join(__dirname, '/todo/dist')))
+// app.use(express.static(path.join(__dirname, '/todo/dist')))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'todo', 'dist', 'index.html'))
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'todo', 'dist', 'index.html'))
+// });
 
 // Error hnadling middleware
 app.use((err, req, res, next) => {

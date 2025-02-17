@@ -17,9 +17,6 @@ app.use(cors());
 
 const port = process.env.PORT || 3000;
 
-const __dirname = path.resolve()
-
-
 app.listen(port, ()=>{
     connectDB();
     console.log("Server started at port 3000");
@@ -27,8 +24,9 @@ app.listen(port, ()=>{
 
 app.use("/api/tasks", taskRouter);
 
-app.use(express.static(path.join(__dirname, '/todo/dist')))
 
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname, '/todo/dist')))
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'todo', 'dist', 'index.html'))
 });
